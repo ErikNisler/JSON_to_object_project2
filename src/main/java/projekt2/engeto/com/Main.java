@@ -20,7 +20,7 @@ public class Main {
     static Map<String, State> map = new HashMap<>();
 
     public static void main(String... args) throws IOException, ParseException, InterruptedException {
-        boolean isIn = false;
+        boolean isIn = true;
         int count = 0;
 
         /**1. Zavolat API pomocí HTTP*/
@@ -55,19 +55,21 @@ public class Main {
 
             if (input.isEmpty()){
                 count++;
-            }
-            else {
+            } else {
                 for (HashMap.Entry<String, State> entry : map.entrySet()) {
                     if (entry.getKey().equals(input)) {
-                        System.out.println(entry.getKey() + " : " + entry.getValue());
                         isIn = true;
+                        System.out.println(entry.getKey() + " : " + entry.getValue());
+                        break;
+                    } else {
+                        isIn = false;
                     }
                 }
             }
             if (!isIn) {
-                System.out.println("Chybné zadání zkratky země!");
+                    System.out.println("Chybné zadání země!");
+                }
             }
-        }
 
     }
 
